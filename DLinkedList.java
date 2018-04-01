@@ -34,33 +34,50 @@ public class DLinkedList<T> {
     }
 
     public void addFirst(Node<T> n) {
-    	Node<T> newnode = new Node<T>(item, header, trailer);
+    	Node<T> newnode = new Node<T>(n.getItem() , header, trailer); //n.getItem() 이 맞나?
 		header = newnode;
 		size++;
     }
 
     public void addLast(Node<T> n) {
-        /**/
+    	Node<T> newnode = new Node<T>(n.getItem(), header, trailer);  //n.getItem() 이 맞나?
+		header = newnode;
+		size++;
     }
 
     public T removeFirst() {
-        /**/
+    	if(isEmpty()) return null;
+    	return remove(header.getNext());
     }
 
     public T removeLast() {
-        /**/
+    	if(isEmpty()) return null;
+    	return remove(trailer.getPrev());
     }
 
     public void addAfter(Node<T> p, Node<T> n) {
-       /**/
+    	n.setNext(p.getNext());
+    	n.setPrev(p);
+    	p.getNext().setPrev(n);
+    	p.setNext(n);
+    	size = size + 1;
     }
 
     public void addBefore(Node<T> p, Node<T> n) {
-        /**/
+    	n.setNext(p);
+    	n.setPrev(p.getPrev());
+    	p.getPrev().setNext(n);
+    	p.setPrev(n);
+    	size = size + 1;
     }
 
-    public T remove(Node<T> n) {
-        /**/
+    public T remove(Node<T> n) {						
+    	n.getPrev().setNext(n.getNext());
+    	n.getNext().setPrev(n.getPrev());
+    	n.setPrev(null);
+    	n.setNext(null);
+    	size = size + 1;
+    	return null; 								//리턴 무엇 해주어야 하지
     }
 
     @Override
