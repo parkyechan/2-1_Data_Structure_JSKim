@@ -21,16 +21,18 @@ public class Node<T> {
     public Node<T> getPrev() {
         return prev;
     }
-
-    public void setPrev(Node<T> prev) {
-        this.prev = prev;
-    }
-
     public Node<T> getNext() {
         return next;
     }
-
+    
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
+    }
     public void setNext(Node<T> next) {
         this.next = next;
     }
+
+    
+
+    
 }
